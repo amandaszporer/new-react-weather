@@ -51,9 +51,14 @@ function Weather() {
         <Button variant="btn btn-outline-light"> Current Location </Button>
         </Col>
         </Row>
-      </Form>
+      </Form>)
 
-  )
+    let footer = (
+      <footer>
+        <a href="https://github.com/amandaszporer/new-react-weather" target="_blank">Open-sourse code</a> by Amanda Szporer
+      </footer>
+    )
+
     if (loaded) {
       return(
         <div className="Weather">
@@ -79,6 +84,7 @@ function Weather() {
         </ul>
         </Col>
         </Row>
+        {footer}
         </div>
       )
       

@@ -1,0 +1,22 @@
+.Weather {
+  background: linear-gradient(#024cad, #fff);
+  max-width: 650px;
+  color: #ffffff;
+  border-radius: 10px;
+  margin-top: 15px;
+  font-family: "Open Sans Condensed", sans-serif;
+  text-transform: capitalize;
+  padding: 30px;
+  display: block;
+  margin: 0 auto;
+}
+
+.Weather h2 {
+  font-size: 50px;
+}
+
+.Weather ul {
+  margin-left: 0;
+  padding: 0;
+  list-style: none;
+}

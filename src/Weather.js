@@ -39,22 +39,22 @@ function Weather() {
     <Form  onSubmit={handleSubmit}>
         <Row>
           <Col>
-        <Form.Control type="search" onChange={updateCity}/>
+        <Form.Control className="form-input" type="search" onChange={updateCity}/>
         </Col>
         <Col>
-        <Button type="submit" className="btn btn-light mb-2">
-          Search
+        <Button type="submit" variant="btn btn-outline-light" className="search-button">
+        🔍
         </Button>
         </Col>
         <Col>
-        <Button variant="btn btn-outline-light"> Current Location </Button>
+        <Button variant="btn btn-outline-light" className="current-location"> Current Location </Button>
         </Col>
         </Row>
       </Form>)
 
     let footer = (
       <footer>
-        <a href="https://github.com/amandaszporer/new-react-weather" target="_blank">Open-sourse code</a> by Amanda Szporer
+        <a href="https://github.com/amandaszporer/new-react-weather" target="_blank">Open-source code</a> by Amanda Szporer
       </footer>
     )
 
@@ -65,8 +65,8 @@ function Weather() {
         <h1>{weatherInfo.name}</h1>
         <Row>
         <Col>
-        <p> {weatherInfo.description} </p>
-         <ReactAnimatedWeather
+        <p className="ml-2 description"> {weatherInfo.description} </p>
+         <ReactAnimatedWeather className="icon"
             icon={`CLEAR_DAY`}
             color={`white`}
             size={150}

@@ -26,8 +26,7 @@ function Weather() {
       humidity: response.data.main.humidity,
       icon: `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
     })
-    setLoaded(true)
-    console.log(weatherInfo);
+    setLoaded(true);
   }
 
   function handleSubmit(event){

@@ -54,7 +54,7 @@ function Weather() {
 
     let footer = (
       <footer>
-        <a href="https://github.com/amandaszporer/new-react-weather" target="_blank">Open-source code</a> by Amanda Szporer
+        <a href="https://github.com/amandaszporer/new-react-weather" target="_blank" rel="noreferrer" >Open-source code</a> by Amanda Szporer
       </footer>
     )
 

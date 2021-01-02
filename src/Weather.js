@@ -4,11 +4,11 @@ import { useState } from "react"
 import { Container, Button, Form, Row, Col } from "react-bootstrap"
 import 'bootstrap/dist/css/bootstrap.min.css'
 import ReactAnimatedWeather from 'react-animated-weather'
+import DateTime from "./DateTime"
 
 function Weather() {
   let [city, setCity] = useState ("Tel Aviv")
-  let [loaded, setLoaded] = useState (false)
-  let [weatherInfo, setweatherInfo] = useState (null)
+  let [weatherInfo, setweatherInfo] = useState ({loaded:false})
 
   function updateCity(event){
   setCity(event.target.value);
@@ -24,9 +24,10 @@ function Weather() {
       description: response.data.weather[0].description,
       wind: response.data.wind.speed,
       humidity: response.data.main.humidity,
-      icon: `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+      date: new Date(response.data.dt * 1000),
+      icon: `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
+      loaded: true
     })
-    setLoaded(true);
   }
 
   function handleSubmit(event){
@@ -58,11 +59,12 @@ function Weather() {
       </footer>
     )
 
-    if (loaded) {
+    if (weatherInfo.loaded) {
       return(
         <div className="Weather">
         {form}
         <h1>{weatherInfo.name}</h1>
+        <p className="ml-3 date"> <DateTime date={weatherInfo.date}/></p>
         <Row>
         <Col>
         <p className="ml-2 description"> {weatherInfo.description} </p>

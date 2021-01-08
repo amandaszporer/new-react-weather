@@ -3,6 +3,7 @@ import DateTime from "./DateTime"
 import { Row, Col } from "react-bootstrap"
 import 'bootstrap/dist/css/bootstrap.min.css'
 import WeatherIcon from "./WeatherIcon"
+import WeatherTemperature from "./WeatherTemperature"
 
 export default function WeatherData(props){
     return(
@@ -16,13 +17,8 @@ export default function WeatherData(props){
   
         </Col>
         <Col>
-        <h2>{props.data.temperature}°C</h2>
-        <h3><strong>{props.data.maxTemp}°C</strong> {props.data.minTemp}°C</h3>
-        <ul>
-          <li>Feels Like: {props.data.feelsLike}°C</li>
-          <li>Humidity: {props.data.humidity}%</li>
-          <li>wind: {props.data.wind} km/h</li>
-        </ul>
+        <WeatherTemperature current={props.data.temperature} max={props.data.maxTemp} min={props.data.minTemp} feelsLike={props.data.feelsLike} humidity={props.data.humidity} wind={props.data.wind}/>
+        
         </Col>
         </Row>
 

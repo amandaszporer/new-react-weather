@@ -2,7 +2,7 @@ import React from "react"
 import DateTime from "./DateTime"
 import { Row, Col } from "react-bootstrap"
 import 'bootstrap/dist/css/bootstrap.min.css'
-import ReactAnimatedWeather from 'react-animated-weather'
+import WeatherIcon from "./WeatherIcon"
 
 export default function WeatherData(props){
     return(
@@ -12,11 +12,7 @@ export default function WeatherData(props){
         <Row>
         <Col>
         <p className="ml-2 description"> {props.data.description} </p>
-         <ReactAnimatedWeather className="icon"
-            icon={`CLEAR_DAY`}
-            color={`white`}
-            size={150}
-            animate= {true} />
+         <WeatherIcon code={props.data.icon}/>
   
         </Col>
         <Col>

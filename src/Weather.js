@@ -3,12 +3,16 @@ import axios from "axios"
 import { useState } from "react"
 import { Container, Button, Form, Row, Col } from "react-bootstrap"
 import 'bootstrap/dist/css/bootstrap.min.css'
-import ReactAnimatedWeather from 'react-animated-weather'
-import DateTime from "./DateTime"
+import WeatherData from "./WeatherData"
 
 function Weather() {
   let [city, setCity] = useState ("Tel Aviv")
   let [weatherInfo, setweatherInfo] = useState ({loaded:false})
+
+  function search(){
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=5245c70173752e9c7a1ea0e23d87c083&&units=metric`;
+    axios.get(apiUrl).then(updateWeather)
+  }
 
   function updateCity(event){
   setCity(event.target.value);
@@ -32,8 +36,7 @@ function Weather() {
 
   function handleSubmit(event){
     event.preventDefault();
-    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=5245c70173752e9c7a1ea0e23d87c083&&units=metric`;
-    axios.get(apiUrl).then(updateWeather);
+    search();
   }
 
   let form = (
@@ -63,35 +66,13 @@ function Weather() {
       return(
         <div className="Weather">
         {form}
-        <h1>{weatherInfo.name}</h1>
-        <p className="ml-3 date"> <DateTime date={weatherInfo.date}/></p>
-        <Row>
-        <Col>
-        <p className="ml-2 description"> {weatherInfo.description} </p>
-         <ReactAnimatedWeather className="icon"
-            icon={`CLEAR_DAY`}
-            color={`white`}
-            size={150}
-            animate= {true} />
-  
-        </Col>
-        <Col>
-        <h2>{weatherInfo.temperature}°C</h2>
-        <h3><strong>{weatherInfo.maxTemp}°C</strong> {weatherInfo.minTemp}°C</h3>
-        <ul>
-          <li>Feels Like: {weatherInfo.feelsLike}°C</li>
-          <li>Humidity: {weatherInfo.humidity}%</li>
-          <li>wind: {weatherInfo.wind} km/h</li>
-        </ul>
-        </Col>
-        </Row>
+        <WeatherData data={weatherInfo} />
         {footer}
         </div>
       )
       
     } else {
-      let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=5245c70173752e9c7a1ea0e23d87c083&&units=metric`;
-      axios.get(apiUrl).then(updateWeather);
+      search();
       return (
         <div className="Weather">
           <Container>

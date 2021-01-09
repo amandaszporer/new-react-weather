@@ -4,6 +4,7 @@ import { useState } from "react"
 import { Container, Button, Form, Row, Col } from "react-bootstrap"
 import 'bootstrap/dist/css/bootstrap.min.css'
 import WeatherData from "./WeatherData"
+import WeatherForecast from "./WeatherForecast"
 
 function Weather() {
   let [city, setCity] = useState ("Tel Aviv")
@@ -67,6 +68,7 @@ function Weather() {
         <div className="Weather">
         {form}
         <WeatherData data={weatherInfo} />
+        <WeatherForecast city={weatherInfo.name} />
         {footer}
         </div>
       )

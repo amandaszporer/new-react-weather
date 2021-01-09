@@ -40,10 +40,20 @@ function Weather() {
     search();
   }
 
+  function getLocation(){
+    navigator.geolocation.getCurrentPosition(function(position) {
+      let lat =  position.coords.latitude;
+      let lon =  position.coords.longitude;
+      let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=5245c70173752e9c7a1ea0e23d87c083&&units=metric`;
+      axios.get(apiUrl).then(updateWeather)
+    });
+  }
+  
   let form = (
     <Form  onSubmit={handleSubmit}>
         <Row>
           <Col>
+          
         <Form.Control className="form-input" type="search" onChange={updateCity}/>
         </Col>
         <Col>
@@ -52,7 +62,7 @@ function Weather() {
         </Button>
         </Col>
         <Col>
-        <Button variant="btn btn-outline-light" className="current-location"> Current Location </Button>
+        <Button variant="btn btn-outline-light" className="current-location" onClick={getLocation}> Current Location </Button>
         </Col>
         </Row>
       </Form>)

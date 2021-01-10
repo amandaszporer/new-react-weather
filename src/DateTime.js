@@ -13,8 +13,7 @@ export default function DateTime(props){
     hour = `0${hour}`
   }
 
-
-    return `${day} ${hour}:${minutes}`
+    return (<span className="DateTime">`${day} ${hour}:${minutes}`</span>)
     
 };
 

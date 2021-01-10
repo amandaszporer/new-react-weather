@@ -16,7 +16,7 @@ export default function WeatherTemperature(props){
     if (unit === "celsius"){
     return(
         <div className="WeatherTemperature">
-            <h2>{props.current}<small>°C|<a href="/" onClick={displayFahrenheit}>°F</a></small></h2>
+            <h2>{props.current}<small>°C|<a href="/" rel="noreferrer" onClick={displayFahrenheit}>°F</a></small></h2>
             <h3><strong>{props.max}°C</strong> {props.min}°C</h3>
             <ul>
                 <li>Feels Like: {props.feelsLike}°C</li>
@@ -31,7 +31,7 @@ export default function WeatherTemperature(props){
             let fahrenheitFeelsLike = (props.feelsLike *5/9) + 32;
             return(
         <div className="WeatherTemperature">
-            <h2>{Math.round(fahrenheitCurrent)}<small><a href="/" onClick={displayCelsius}>°C</a>|°F </small></h2>
+            <h2>{Math.round(fahrenheitCurrent)}<small><a href="/" rel="noreferrer" onClick={displayCelsius}>°C</a>|°F </small></h2>
             <h3><strong>{Math.round(fahrenheitMax)}°F</strong> {Math.round(fahrenheitMin)}°F</h3>
             <ul>
                 <li>Feels Like: {Math.round(fahrenheitFeelsLike)}°F</li>
